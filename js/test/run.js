@@ -93,6 +93,7 @@ game_inputs.addEventListener('click', function (e) {
             //if all steps are used - end game
             if (ticks_count == turns) {
                 clearInterval(game.tick);
+                alert('No more turns. Game over!');
             }
 
             //move hare
