@@ -1,0 +1,98 @@
+/* 
+   HTML RESET
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* css reset end */
+
+body {font: normal 14px/1.7em Helvetica, Arial, sans-serif; padding: 1em;}
+
+h1,h2,h3,h4,h5,h6 {font-weight: bold; margin-top: .5em; margin-bottom: .5em;}
+h1 {font-size: 2em;} 
+h2 {font-size: 1.6em}
+h3 {font-size: 1.4em;}
+h4 {font-size: 1.2em}
+h5 {font-size: 1.1em}
+h6 {font-size: 1em;}
+
+p {margin-bottom: 1em;}
+blockquote {margin:1em; padding:0 1em 0 1em; color: #114280; border-left: 2px solid #114280;}
+
+em {font-weight: bold;}
+b {font-weight: bold;}
+strong {font-weight: bold;}
+sup {vertical-align: top; font-size: 0.7em}
+sub {vertical-align: bottom; font-size: 0.7em}
+
+ul, ol {margin-left: 1em;}
+ul {list-style: disc;}
+ol {list-style: decimal;}
+ul>li, ol>li {margin-left:1em;}
+li>ul, li>ol {margin-left:1em;}
+
+fieldset {border: 1px solid rgb(85, 136, 170); padding:0 0.5em 0 0.5em; border-radius: 0.5em;}
+legend {font-weight: bold; color:rgb(85, 136, 170);}
+label {display:block; font-weight: bold; margin:0.7em 0 0.2em 0;}
+textarea {padding:0.5em; height: 1em; vertical-align: middle;min-width: 30em;}
+
+input[type="text"] {min-width: 30em; }
+input[type="submit"], input[type="button"] {display:block; margin: 0.5em 0 0.5em 0;}
+
+div.form-success {color:green; border:1px solid green; background-color: rgb(215, 253, 227); }
+div.form-error {color:red; border:1px solid red; background-color: rgb(245, 215, 215);}
+div.form-notice {color:blue; border:1px solid blue; background-color: #D5E4FF;}
+
+div.form-notice, div.form-success, div.form-error {padding-left: 0.5em; margin:0.3em 0 0.3em 0; border-radius: 0.3em;}
+
+table caption {font-style: italic; font-size: 0.8em;}
+th, td {padding:0.8em; text-align: center;}
+th {font-weight: bold;}
+tr {border-bottom:1px solid black;}
+tr:hover {background-color: white;}
+tfoot {font-weight: bold; font-style: italic;}
+tbody {background-color: rgb(236, 236, 236);}

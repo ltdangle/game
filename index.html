@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ну, погоди!</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 800px;
+            margin: 0 auto;
+            margin-top:10px ;
+        }
+        #game-container {
+            vertical-align: top;
+            background-color: #D7E1F2;
+            width: 400px;
+            /*border: 1px solid black;*/
+            display: table-cell;
+
+        }
+        #separator{
+            display: table-cell;
+            width: 10px;
+        }
+
+        #game-inputs {
+            background-color: #BDF9BD;
+            border-radius: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            display: table-cell;
+        }
+
+        .row{
+            width: 100%;
+        }
+        .cell{
+            display: table-cell;
+            /*float: right;*/
+            border: 1px solid grey;
+            width: 2em;
+            height: 2em;
+        }
+
+        label {
+            display: inline;
+            margin-right: 1em;
+        }
+
+        input[type="text"] {
+            min-width: 0em;
+            width: 2em;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game-container"></div>
+<div id="separator"></div>
+<div id="game-inputs">
+    <form>
+        <fieldset>
+            <legend>Карта</legend>
+            <label>Точек по вертикали</label>
+            <input type="text" id="rows" value="20"><br/>
+
+            <label>Точек по горизонтали</label>
+            <input type="text" id="columns" value="7"><br/>
+
+            <label>Количество ходов</label>
+            <input type="text" id="turns" value="5"><br/>
+
+            <label>Секунд в ходу</label>
+            <input type="text" id="turn_seconds" value="2">
+        </fieldset>
+        <fieldset>
+            <legend>Кусты</legend>
+            <label>Количество кустов</label>
+            <input type="text" id="bushes_number" value="8"><br/>
+
+            <label>Время жизни кустов</label>
+            <input type="text" id="bushes_ttl" value="2">
+        </fieldset>
+        <fieldset>
+            <legend>Деревья</legend>
+            <label>Количество деревьев</label>
+            <input type="text" id="trees_number" value="8"><br/>
+
+            <label>Время жизни деревьев</label>
+            <input type="text" id="trees_ttl" value="3">
+        </fieldset>
+        <fieldset>
+            <legend>Волк</legend>
+            <label>Размер шага</label>
+            <input type="text" id="wolf_step" value="1">
+        </fieldset>
+        <fieldset>
+            <legend>Заяц</legend>
+            <label>Размер шага</label>
+            <input type="text" id="hare_step" value="1">
+        </fieldset>
+    </form>
+    <button id="start-game">Старт</button>
+    <button id="stop-game">Стоп</button>
+    <button id="pause-game">Пауза</button>
+</div>
+
+
+<!--pathfinder helper library-->
+<script type="text/javascript" src="js/pathfinding-browser.js"></script>
+
+<!--map-->
+<script type="text/javascript" src="js/map.js"></script>
+
+<!--obstacles-->
+<script type="text/javascript" src="js/obstacles/tree.js"></script>
+<script type="text/javascript" src="js/obstacles/bush.js"></script>
+
+<!--animals-->
+<script type="text/javascript" src="js/animals/hare.js"></script>
+<script type="text/javascript" src="js/animals/wolf.js"></script>
+
+<!--app-->
+<script type="text/javascript" src="js/app.js"></script>
+
+
+<!--run-->
+<script type="text/javascript" src="js/test/run.js"></script>
+
+</body>
+</html>
