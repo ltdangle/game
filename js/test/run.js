@@ -1,14 +1,15 @@
+
 var settings = {
-    rows: ko.observable(20),
-    columns: ko.observable(7),
-    turns: ko.observable(5),
-    turn_seconds: ko.observable(2),
-    bushes_number: ko.observable(8),
-    bushes_ttl: ko.observable(2),
-    trees_number: ko.observable(8),
-    trees_ttl: ko.observable(3),
-    wolf_step: ko.observable(1),
-    hare_step: ko.observable(1)
+    rows: ko.observable(20).extend({ numeric: 0 }),
+    columns: ko.observable(7).extend({ numeric: 0 }),
+    turns: ko.observable(5).extend({ numeric: 0 }),
+    turn_seconds: ko.observable(2).extend({ numeric: 0 }),
+    bushes_number: ko.observable(8).extend({ numeric: 0 }),
+    bushes_ttl: ko.observable(2).extend({ numeric: 0 }),
+    trees_number: ko.observable(8).extend({ numeric: 0 }),
+    trees_ttl: ko.observable(3).extend({ numeric: 0 }),
+    wolf_step: ko.observable(1).extend({ numeric: 0 }),
+    hare_step: ko.observable(1).extend({ numeric: 0 })
 };
 
 ko.applyBindings(settings, document.getElementById('game-inputs'));
@@ -28,12 +29,12 @@ game_inputs.addEventListener('click', function (e) {
         game.plantObstacles(settings.bushes_number(), 'bush');
 
         //set bushes time to live
-        game.bushes_tick_counter=0;
-        game.bushes_ttl=settings.bushes_ttl();
+        game.bushes_tick_counter = 0;
+        game.bushes_ttl = settings.bushes_ttl();
 
         //set trees time to live
-        game.trees_tick_counter=0;
-        game.trees_ttl=settings.trees_ttl();
+        game.trees_tick_counter = 0;
+        game.trees_ttl = settings.trees_ttl();
 
         //place the hare
         game.placeHare();
@@ -49,27 +50,28 @@ game_inputs.addEventListener('click', function (e) {
         function play() {
 
             //check if wolf caught hare
-            if (game.isGameOver()){
+            if (game.isGameOver()) {
                 alert('Game over!');
                 clearTimeout(hare_timeout);
                 clearTimeout(wolf_timeout);
                 clearInterval(game.tick);
                 return;
-            };
+            }
+            ;
 
             //cycle bushes
-            if (game.bushes_ttl==game.bushes_tick_counter){
+            if (game.bushes_ttl == game.bushes_tick_counter) {
                 game.removeObstacles('bush');
                 game.plantObstacles(settings.bushes_number(), 'bush');
-                game.bushes_tick_counter=0;
+                game.bushes_tick_counter = 0;
                 game.render();
             }
 
             //cycle trees
-            if (game.trees_ttl==game.trees_tick_counter){
+            if (game.trees_ttl == game.trees_tick_counter) {
                 game.removeObstacles('tree');
                 game.plantObstacles(settings.trees_number(), 'tree');
-                game.trees_tick_counter=0;
+                game.trees_tick_counter = 0;
                 game.render();
             }
 
@@ -85,7 +87,7 @@ game_inputs.addEventListener('click', function (e) {
                 game.render();
             }
 
-            var hare_timeout=setTimeout(move_hare, 500);
+            var hare_timeout = setTimeout(move_hare, 500);
 
             //move wolf
             function move_wolf() {
@@ -93,7 +95,7 @@ game_inputs.addEventListener('click', function (e) {
                 game.render();
             }
 
-            var wolf_timeout=setTimeout(move_wolf, 1000);
+            var wolf_timeout = setTimeout(move_wolf, 1000);
 
             ticks_count++;
             game.bushes_tick_counter++;
