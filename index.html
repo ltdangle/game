@@ -67,42 +67,42 @@
         <fieldset>
             <legend>Карта</legend>
             <label>Точек по вертикали</label>
-            <input type="text" id="rows" value="20"><br/>
+            <input data-bind="value: rows" type="text" id="rows"><br/>
 
             <label>Точек по горизонтали</label>
-            <input type="text" id="columns" value="7"><br/>
+            <input data-bind="value: columns" type="text" id="columns"><br/>
 
             <label>Количество ходов</label>
-            <input type="text" id="turns" value="5"><br/>
+            <input data-bind="value: turns" type="text" id="turns"><br/>
 
             <label>Секунд в ходу</label>
-            <input type="text" id="turn_seconds" value="2">
+            <input data-bind="value: turn_seconds" type="text" id="turn_seconds">
         </fieldset>
         <fieldset>
             <legend>Кусты</legend>
             <label>Количество кустов</label>
-            <input type="text" id="bushes_number" value="8"><br/>
+            <input type="text" data-bind="value: bushes_number" id="bushes_number"><br/>
 
             <label>Время жизни кустов</label>
-            <input type="text" id="bushes_ttl" value="2">
+            <input type="text" data-bind="value: bushes_ttl" id="bushes_ttl">
         </fieldset>
         <fieldset>
             <legend>Деревья</legend>
             <label>Количество деревьев</label>
-            <input type="text" id="trees_number" value="8"><br/>
+            <input type="text" data-bind="value: trees_number" id="trees_number"><br/>
 
             <label>Время жизни деревьев</label>
-            <input type="text" id="trees_ttl" value="3">
+            <input type="text" data-bind="value: trees_ttl" id="trees_ttl">
         </fieldset>
         <fieldset>
             <legend>Волк</legend>
             <label>Размер шага</label>
-            <input type="text" id="wolf_step" value="1">
+            <input type="text" data-bind="value: wolf_step" id="wolf_step">
         </fieldset>
         <fieldset>
             <legend>Заяц</legend>
             <label>Размер шага</label>
-            <input type="text" id="hare_step" value="1">
+            <input type="text" data-bind="value: hare_step" id="hare_step">
         </fieldset>
     </form>
     <button id="start-game">Старт</button>
@@ -113,6 +113,7 @@
 
 <!--pathfinder helper library-->
 <script type="text/javascript" src="js/pathfinding-browser.js"></script>
+<script type="text/javascript" src="js/lib/knockout-3.1.0.js"></script>
 
 <!--map-->
 <script type="text/javascript" src="js/map.js"></script>

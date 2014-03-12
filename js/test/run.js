@@ -1,48 +1,39 @@
+var settings = {
+    rows: ko.observable(20),
+    columns: ko.observable(7),
+    turns: ko.observable(5),
+    turn_seconds: ko.observable(2),
+    bushes_number: ko.observable(8),
+    bushes_ttl: ko.observable(2),
+    trees_number: ko.observable(8),
+    trees_ttl: ko.observable(3),
+    wolf_step: ko.observable(1),
+    hare_step: ko.observable(1)
+};
+
+ko.applyBindings(settings, document.getElementById('game-inputs'));
+
+
 var game = app(document.getElementById('game-container'));
 
 var game_inputs = document.getElementById('game-inputs');
 
 game_inputs.addEventListener('click', function (e) {
     if (e.target.id == 'start-game') {
-        var rows_input = document.getElementById('rows');
-        var rows = parseInt(rows_input.value);
-
-        var columns_input = document.getElementById('columns');
-        var columns = parseInt(columns_input.value);
-
         //build map
-        game.buildMap(rows, columns);
-
-        var bushes_number_input = document.getElementById('bushes_number');
-        var bushes_number = parseInt(bushes_number_input.value);
-
-
-        var trees_number_input = document.getElementById('trees_number');
-        var trees_number = parseInt(trees_number_input.value);
-
-        var bushes_ttl_input = document.getElementById('bushes_ttl');
-        var bushes_ttl = parseInt(bushes_ttl_input.value);
-
-        var trees_ttl_input = document.getElementById('trees_ttl');
-        var trees_ttl = parseInt(trees_ttl_input.value);
-
-        var hare_step_input=document.getElementById('hare_step');
-        var hare_step=parseInt(hare_step_input.value);
-
-        var wolf_step_input=document.getElementById('wolf_step');
-        var wolf_step=parseInt(wolf_step_input.value);
+        game.buildMap(settings.rows(), settings.columns());
 
         //populate map
-        game.plantObstacles(trees_number, 'tree');
-        game.plantObstacles(bushes_number, 'bush');
+        game.plantObstacles(settings.trees_number(), 'tree');
+        game.plantObstacles(settings.bushes_number(), 'bush');
 
         //set bushes time to live
         game.bushes_tick_counter=0;
-        game.bushes_ttl=bushes_ttl;
+        game.bushes_ttl=settings.bushes_ttl();
 
         //set trees time to live
         game.trees_tick_counter=0;
-        game.trees_ttl=trees_ttl;
+        game.trees_ttl=settings.trees_ttl();
 
         //place the hare
         game.placeHare();
@@ -53,15 +44,7 @@ game_inputs.addEventListener('click', function (e) {
         //render map
         game.render();
 
-        var turn_seconds_input = document.getElementById('turn_seconds');
-        var turn_seconds = parseInt(turn_seconds_input.value);
-
-        var turns_input = document.getElementById('turns');
-        var turns = parseInt(turns_input.value);
-
-
         var ticks_count = 0;
-
 
         function play() {
 
@@ -77,7 +60,7 @@ game_inputs.addEventListener('click', function (e) {
             //cycle bushes
             if (game.bushes_ttl==game.bushes_tick_counter){
                 game.removeObstacles('bush');
-                game.plantObstacles(bushes_number, 'bush');
+                game.plantObstacles(settings.bushes_number(), 'bush');
                 game.bushes_tick_counter=0;
                 game.render();
             }
@@ -85,20 +68,20 @@ game_inputs.addEventListener('click', function (e) {
             //cycle trees
             if (game.trees_ttl==game.trees_tick_counter){
                 game.removeObstacles('tree');
-                game.plantObstacles(bushes_number, 'tree');
+                game.plantObstacles(settings.trees_number(), 'tree');
                 game.trees_tick_counter=0;
                 game.render();
             }
 
             //if all steps are used - end game
-            if (ticks_count == turns) {
+            if (ticks_count == settings.turns()) {
                 clearInterval(game.tick);
                 alert('No more turns. Game over!');
             }
 
             //move hare
             function move_hare() {
-                game.hare.move(hare_step);
+                game.hare.move(settings.hare_step());
                 game.render();
             }
 
@@ -106,7 +89,7 @@ game_inputs.addEventListener('click', function (e) {
 
             //move wolf
             function move_wolf() {
-                game.wolf.move(wolf_step);
+                game.wolf.move(settings.wolf_step());
                 game.render();
             }
 
@@ -119,7 +102,7 @@ game_inputs.addEventListener('click', function (e) {
 
         }
 
-        game.tick = setInterval(play, turn_seconds * 1000);
+        game.tick = setInterval(play, settings.turn_seconds() * 1000);
     }
     else if (e.target.id == 'stop-game') {
         clearInterval(game.tick);
